@@ -11,7 +11,7 @@ import Blog from "../components/Blog";
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <App />,
+      element: <App/>,
       children :[
         {
             path: "/",

@@ -7,8 +7,8 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <Outlet />
+      <Navbar/>
+      <Outlet/>
     </>
   )
 }

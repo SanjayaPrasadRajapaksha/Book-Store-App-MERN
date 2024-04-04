@@ -26,10 +26,10 @@ const Navbar = () => {
 
         }
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener("scroll", handleScroll);
 
         return () => {
-            window.addEventListener('scroll', handleScroll);
+            window.addEventListener("scroll", handleScroll);
         }
 
     }, [])
@@ -38,7 +38,7 @@ const Navbar = () => {
 
     const navItems = [
         {Link: "Home", path:"/"},
-        {Link: "About", path:"/about"},
+        {Link: 'About', path:'/about'},
         {Link: "Shop", path:"/shop"},
         {Link: "Sell",path: "/admin/dashboard"},
         {Link: "Blog", path: "/blog"},
@@ -54,10 +54,24 @@ const Navbar = () => {
                     {/*nav item for large device*/}
 
                     <ul className='md:flex space-x-12 hidden'>
-                        {
-                            navItems.map(({Link, path}) => <Link key={path} to={path} className='block text-base text-black 
-                            uppercase cursor-pointer hover:text-blue-700'>{Link}</Link>)
-                        }
+
+                       
+<Link to="/" className='block text-base text-black 
+ uppercase cursor-pointer hover:text-blue-700'>Home</Link>
+
+ <Link to="/about" className='block text-base text-black 
+ uppercase cursor-pointer hover:text-blue-700'>About</Link>
+
+ <Link to="/shop" className='block text-base text-black 
+ uppercase cursor-pointer hover:text-blue-700'>Shop</Link>
+
+ <Link to="/admin/dashboard" className='block text-base text-black 
+ uppercase cursor-pointer hover:text-blue-700'>Sell Your Book</Link>
+
+ <Link to="/blog" className='block text-base text-black 
+ uppercase cursor-pointer hover:text-blue-700'>Blog</Link>
+                           
+                        
 
                     </ul>
                     {/* btn for lg devices */}

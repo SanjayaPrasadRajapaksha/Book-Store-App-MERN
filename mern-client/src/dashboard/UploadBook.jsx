@@ -36,25 +36,25 @@ function UploadBook() {
     const imageURL = form.imageURL.value;
     const category = form.categoryName.value;
     const book = form.bookTitle.value;
-    const bookDescription = form.bookDescription.value;
+    const description = form.bookDescription.value;
     const bookPDFUrl = form.bookPDFUrl.value;
 
     const bookObj = {
-      bookTitle, authorName, imageURL, category, book, bookDescription, bookPDFUrl
+      bookTitle, authorName, imageURL, category, book, description, bookPDFUrl
     }
     console.log(bookObj);
 
     // send data to db
-    fetch("http://localhost:3000/upload-book",{
+    fetch("http://localhost:3000/upload-book", {
       method: 'POST',
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(bookObj)
-    }).then(res => res.json()).then(data =>{
+    }).then(res => res.json()).then(data => {
 
-    alert("Book is Uploaded Successfully ! ");
-    form.reset();
+      alert("Book is Uploaded Successfully ! ");
+      form.reset();
     })
 
   }

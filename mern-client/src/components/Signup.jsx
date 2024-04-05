@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../contects/AuthProvider'
+import googlelogo from "../assets/google-logo.png"
 
 const Signup = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, loginWithGoogle } = useContext(AuthContext);
     const [error, setError] = useState("error");
+
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -22,10 +24,24 @@ const Signup = () => {
             .then((userCredential) => {
                 // Signed up 
                 const user = userCredential.user;
-                alert("Sign up succefully")
-                navigate(from,{replace:true})
+                alert("Signup succefully")
+                navigate(from, { replace: true })
                 // ...
             })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setError(errorMessage)
+                // ..
+            });
+    }
+
+    const handleRegister = () => {
+        loginWithGoogle().then((result) => {
+            const user = result.user;
+            alert("Sign up succefully")
+            navigate(from, { replace: true })
+        })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -53,11 +69,16 @@ const Signup = () => {
                                 <div className="relative">
                                     <input id="password" name="password" type="password" className="peer  h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" />
                                 </div>
-                                <p>If have an acconut. Please <Link to="/login" classNameName='text-blue-600 underline'>Login</Link> Here</p>
+                                <p>If have an acconut. Please <Link to="/login" className='text-blue-600 underline'>Login</Link> Here</p>
                                 <div className="relative">
                                     <button className="bg-blue-500 text-white rounded-md px-6 py-2">Sign Up</button>
                                 </div>
                             </form>
+                        </div>
+                        <hr />
+                        <div className='flex w-full items-center flex-col mt-5 gap-3'>
+                            <button onClick={handleRegister} className='block'>
+                                <img src={googlelogo} alt='' className='w-12 h-12 inline-block' />Login with Google</button>
                         </div>
                     </div>
                 </div>
